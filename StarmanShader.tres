@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bupuaxp5ttv03"]
+
+[ext_resource type="Shader" path="res://FlashShader.gdshader" id="1_so0uf"]
+
+[resource]
+shader = ExtResource("1_so0uf")
+shader_parameter/time_speed = 7.945
+shader_parameter/intensity = 0.754

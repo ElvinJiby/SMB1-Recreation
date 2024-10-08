@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://c67mx3mt4riwp"]
+
+[ext_resource type="Script" path="res://goomba.gd" id="1_6hxh7"]
+[ext_resource type="Texture2D" uid="uid://cb27htwty73va" path="res://assets/enemies.png" id="1_vm3hm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xks6k"]
+atlas = ExtResource("1_vm3hm")
+region = Rect2(34, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxxt5"]
+atlas = ExtResource("1_vm3hm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6cod"]
+atlas = ExtResource("1_vm3hm")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ik7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xks6k")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxxt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6cod")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dkca"]
+size = Vector2(70, 55.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bc41"]
+size = Vector2(68, 20.25)
+
+[node name="Goomba" type="CharacterBody2D"]
+script = ExtResource("1_6hxh7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_1ik7i")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.75)
+shape = SubResource("RectangleShape2D_7dkca")
+debug_color = Color(0.755713, 0.288938, 0.875654, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="HeadCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -24.875)
+shape = SubResource("RectangleShape2D_4bc41")
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_kill_area_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
