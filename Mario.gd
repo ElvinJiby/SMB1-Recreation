@@ -17,8 +17,25 @@ extends CharacterBody2D
 var can_double_jump: bool = true
 var is_invincible: bool = false
 
+@export var starman_duration: float = 10.7
+var remaining_starman_time: float = 0.0
+var is_starman_music_playing: bool = false
+var last_printed_time: int = -1
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _process(delta: float) -> void:
+	if is_invincible:
+		remaining_starman_time -= delta
+		
+		var current_time = int(ceil(remaining_starman_time))
+		if current_time != last_printed_time:
+			last_printed_time = current_time
+			print("Starman time remaining: ",remaining_starman_time)
+		
+		if remaining_starman_time <= 0:
+			deactivate_starman()
 
 func _physics_process(delta):
 	var isRunning: bool = Input.is_action_pressed("Run")
@@ -91,23 +108,38 @@ func _physics_process(delta):
 		velocity = Vector2()
 		
 	if Input.is_action_just_pressed("Invincible"):
-		if not is_invincible:
-			is_invincible = true
-			set_collision_layer_value(1, false)
-			anim.material = preload("res://StarmanShader.tres")
-			AudioController.stop_all()
-			AudioController.play_invincibility()
-			
-			await get_tree().create_timer(11.0).timeout
-			
-			set_collision_layer_value(1, true)
-			anim.material = null
-			AudioController.stop_all()
-			AudioController.play_music()
-			is_invincible = false
+		activate_starman()
 		
 	move_and_slide()
 
+func activate_starman():
+	remaining_starman_time += starman_duration
+	AudioController.play_starman_bling()
+	
+	if not is_invincible:
+		is_invincible = true
+		set_collision_layer_value(1, false)
+		anim.material = preload("res://StarmanShader.tres")
+		
+		if not is_starman_music_playing:
+			AudioController.stop_all()
+			AudioController.play_invincibility()
+			is_starman_music_playing = true
+		
+		print("Starman activated! Remaining time:", remaining_starman_time)
+		
+func deactivate_starman():
+	is_invincible = false
+	remaining_starman_time = 0.0
+	set_collision_layer_value(1, true)
+	anim.material = null
+	
+	if is_starman_music_playing:
+		AudioController.stop_all()
+		AudioController.play_music()
+		is_starman_music_playing = false
+	
+	print("Starman ended!")	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if is_invincible:

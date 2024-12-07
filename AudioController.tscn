@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://rpv1ehwwkkog"]
+[gd_scene load_steps=7 format=3 uid="uid://rpv1ehwwkkog"]
 
 [ext_resource type="Script" path="res://audio_controller.gd" id="1_e300q"]
 [ext_resource type="AudioStream" uid="uid://qopqt2h6yae7" path="res://audio/Jump.wav" id="2_b1ccp"]
 [ext_resource type="AudioStream" uid="uid://c6wctydtlnfb2" path="res://audio/Overworld.mp3" id="2_jru1v"]
-[ext_resource type="AudioStream" uid="uid://dgkf2d2814t8m" path="res://audio/Starman.ogg" id="3_ousyw"]
+[ext_resource type="AudioStream" uid="uid://djsjuv23oetug" path="res://audio/Starman bling.wav" id="3_g44ii"]
 [ext_resource type="AudioStream" uid="uid://ck00fs3qbqm1n" path="res://audio/Squish.wav" id="4_31lul"]
+[ext_resource type="AudioStream" uid="uid://tg5omsootqn2" path="res://audio/Starman2.mp3" id="4_d8pk3"]
 
 [node name="AudioController" type="Node2D"]
 script = ExtResource("1_e300q")
@@ -12,6 +13,9 @@ script = ExtResource("1_e300q")
 [node name="OverworldTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jru1v")
 parameters/looping = true
+
+[node name="StarmanPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g44ii")
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_b1ccp")
@@ -23,7 +27,8 @@ volume_db = 5.0
 pitch_scale = 1.17
 
 [node name="Invincibility" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ousyw")
+stream = ExtResource("4_d8pk3")
+parameters/looping = true
 
 [node name="EnemyDie" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_31lul")

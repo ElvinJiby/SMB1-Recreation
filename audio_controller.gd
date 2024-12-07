@@ -18,7 +18,11 @@ func play_jump():
 func play_doublejump():
 	if not mute:
 		$DoubleJump.play()
-		
+
+func play_starman_bling():
+	if not mute:
+		$StarmanPickup.play()
+
 func play_invincibility():
 	if not mute:
 		$Invincibility.play()
