@@ -27,9 +27,17 @@ func play_invincibility():
 	if not mute:
 		$Invincibility.play()
 		
+func play_starman_warning():
+	if not mute:
+		$StarmanWarning.play()
+		
 func play_enemydie():
 	if not mute:
 		$EnemyDie.play()
+		
+func play_pipe():
+	if not mute:
+		$Pipe.play()
 
 func stop_all():
 	$Invincibility.stop()

@@ -20,6 +20,7 @@ var is_invincible: bool = false
 @export var starman_duration: float = 10.7
 var remaining_starman_time: float = 0.0
 var is_starman_music_playing: bool = false
+var starman_warning_played: bool = false
 var last_printed_time: int = -1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -33,6 +34,10 @@ func _process(delta: float) -> void:
 		if current_time != last_printed_time:
 			last_printed_time = current_time
 			print("Starman time remaining: ",remaining_starman_time)
+		
+		if remaining_starman_time <= 1.5 and not starman_warning_played:
+			AudioController.play_starman_warning()
+			starman_warning_played = true
 		
 		if remaining_starman_time <= 0:
 			deactivate_starman()
@@ -114,11 +119,13 @@ func _physics_process(delta):
 
 func activate_starman():
 	remaining_starman_time += starman_duration
+	starman_warning_played = false
 	AudioController.play_starman_bling()
 	
 	if not is_invincible:
 		is_invincible = true
 		set_collision_layer_value(1, false)
+		#set_collision_layer_value(2, true)
 		anim.material = preload("res://StarmanShader.tres")
 		
 		if not is_starman_music_playing:
@@ -132,10 +139,12 @@ func deactivate_starman():
 	is_invincible = false
 	remaining_starman_time = 0.0
 	set_collision_layer_value(1, true)
+	#set_collision_layer_value(2, false)
 	anim.material = null
 	
 	if is_starman_music_playing:
 		AudioController.stop_all()
+		AudioController.play_pipe()
 		AudioController.play_music()
 		is_starman_music_playing = false
 	

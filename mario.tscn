@@ -88,6 +88,7 @@ size = Vector2(70, 85)
 
 [node name="Mario" type="CharacterBody2D"]
 position = Vector2(1638, 770)
+collision_priority = 2.0
 script = ExtResource("1_4wia5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
