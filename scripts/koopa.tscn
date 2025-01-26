@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0q676j8sx7px"]
 
-[ext_resource type="Script" path="res://koopa.gd" id="1_fajms"]
+[ext_resource type="Script" path="res://scripts/koopa.gd" id="1_fajms"]
 [ext_resource type="Texture2D" uid="uid://cqlwmyvpxyqg7" path="res://assets/koopa.png" id="2_60i25"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1os5"]

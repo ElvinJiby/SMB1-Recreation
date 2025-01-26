@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://c417ycxmhuaor"]
 
 [ext_resource type="Texture2D" uid="uid://4y7tfogph1ge" path="res://assets/bg.png" id="1_50xcw"]
-[ext_resource type="PackedScene" uid="uid://2kxpsch1u6ag" path="res://mario.tscn" id="1_i30a6"]
-[ext_resource type="Script" path="res://node_2d.gd" id="1_vlf6f"]
+[ext_resource type="PackedScene" uid="uid://2kxpsch1u6ag" path="res://scripts/mario.tscn" id="1_i30a6"]
+[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_vlf6f"]
 [ext_resource type="Texture2D" uid="uid://dk554eju8hcyu" path="res://assets/bg1.png" id="3_dq6r0"]
 [ext_resource type="Texture2D" uid="uid://00ejjnkvfum1" path="res://assets/fgsprites.png" id="3_h6em7"]
-[ext_resource type="PackedScene" uid="uid://c67mx3mt4riwp" path="res://goomba.tscn" id="4_c7cdt"]
+[ext_resource type="PackedScene" uid="uid://c67mx3mt4riwp" path="res://scripts/goomba.tscn" id="4_c7cdt"]
 [ext_resource type="Texture2D" uid="uid://dy6bq2x3uvl7x" path="res://assets/bg2.png" id="4_hx2w7"]
-[ext_resource type="PackedScene" uid="uid://d0q676j8sx7px" path="res://koopa.tscn" id="8_6mx40"]
+[ext_resource type="PackedScene" uid="uid://d0q676j8sx7px" path="res://scripts/koopa.tscn" id="8_6mx40"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_winqe"]
 texture = ExtResource("3_h6em7")
@@ -63,8 +63,8 @@ motion_mirroring = Vector2(256, 0)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG"]
-position = Vector2(0, -80)
-scale = Vector2(7, 5)
+position = Vector2(8, -376)
+scale = Vector2(7, 7)
 texture = ExtResource("1_50xcw")
 centered = false
 metadata/_edit_lock_ = true
@@ -75,10 +75,9 @@ motion_mirroring = Vector2(3072, 0)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG2"]
-position = Vector2(1536, 704)
+position = Vector2(1544, 702)
 scale = Vector2(3, 3)
 texture = ExtResource("3_dq6r0")
-metadata/_edit_lock_ = true
 
 [node name="BG3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
@@ -86,7 +85,7 @@ motion_mirroring = Vector2(2560, 0)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG3"]
-position = Vector2(1280, 1200)
+position = Vector2(1264, 1257)
 scale = Vector2(5, 5)
 texture = ExtResource("4_hx2w7")
 metadata/_edit_lock_ = true
@@ -95,7 +94,7 @@ metadata/_edit_lock_ = true
 position = Vector2(2221, 819)
 
 [node name="Mario" parent="." instance=ExtResource("1_i30a6")]
-position = Vector2(261, 835)
+position = Vector2(333, 835)
 
 [node name="Koopa" parent="." instance=ExtResource("8_6mx40")]
 position = Vector2(1093, 827)

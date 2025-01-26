@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c67mx3mt4riwp"]
 
-[ext_resource type="Script" path="res://goomba.gd" id="1_6hxh7"]
+[ext_resource type="Script" path="res://scripts/goomba.gd" id="1_6hxh7"]
 [ext_resource type="Texture2D" uid="uid://cb27htwty73va" path="res://assets/enemies.png" id="1_vm3hm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xks6k"]

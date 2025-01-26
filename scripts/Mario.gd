@@ -107,6 +107,10 @@ func _physics_process(delta):
 		if anim.animation != "jump":
 			anim.play("jump")
 	
+	if Input.is_action_pressed("Down") and velocity.x == 0 and is_on_floor():
+		if anim.animation != "crouch":
+			anim.play("crouch")
+	
 	if Input.is_action_just_pressed("Respawn"):
 		position.x = 698
 		position.y = 830
