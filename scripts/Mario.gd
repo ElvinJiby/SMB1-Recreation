@@ -17,7 +17,7 @@ extends CharacterBody2D
 var can_double_jump: bool = true
 var is_invincible: bool = false
 
-@export var starman_duration: float = 10.7
+@export var starman_duration: float = 15.0 #10.7
 var remaining_starman_time: float = 0.0
 var is_starman_music_playing: bool = false
 var starman_warning_played: bool = false
@@ -118,6 +118,11 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Invincible"):
 		activate_starman()
+	if Input.is_action_just_pressed("StopInvincible"):
+		deactivate_starman()
+	
+	if Input.is_action_just_pressed("MuteMusic"):
+		AudioController.stop_all()
 		
 	move_and_slide()
 

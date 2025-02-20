@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://djsjuv23oetug" path="res://audio/Starman bling.wav" id="3_g44ii"]
 [ext_resource type="AudioStream" uid="uid://ck00fs3qbqm1n" path="res://audio/Squish.wav" id="4_31lul"]
 [ext_resource type="AudioStream" uid="uid://jr2bbkp0jbqc" path="res://audio/Warp.wav" id="5_phooj"]
-[ext_resource type="AudioStream" uid="uid://qormff6xnq5n" path="res://audio/Starman.ogg" id="6_lkh73"]
+[ext_resource type="AudioStream" uid="uid://ftq4vdpxv1wj" path="res://audio/Starman3.ogg" id="6_bhvkr"]
 [ext_resource type="AudioStream" uid="uid://buq0ymyf6wytn" path="res://audio/TimerEnding.wav" id="7_j27g1"]
 
 [node name="AudioController" type="Node2D"]
@@ -33,7 +33,7 @@ volume_db = 5.0
 pitch_scale = 1.17
 
 [node name="Invincibility" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_lkh73")
+stream = ExtResource("6_bhvkr")
 parameters/looping = true
 
 [node name="StarmanWarning" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://f6xnllowhsta"]
+
+[ext_resource type="Texture2D" uid="uid://brb20kj6pi4uv" path="res://assets/objects.png" id="1_142m7"]
+[ext_resource type="Script" path="res://scripts/item_block.gd" id="1_vt72v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bko2c"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggf4m"]
+atlas = ExtResource("1_142m7")
+region = Rect2(1, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0v6v"]
+atlas = ExtResource("1_142m7")
+region = Rect2(18, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20xxd"]
+atlas = ExtResource("1_142m7")
+region = Rect2(35, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkxic"]
+atlas = ExtResource("1_142m7")
+region = Rect2(52, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4jm1"]
+atlas = ExtResource("1_142m7")
+region = Rect2(18, 103, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyu64"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ggf4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0v6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20xxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkxic")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4jm1")
+}],
+"loop": true,
+"name": &"used",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a8fk"]
+size = Vector2(12.8, 3.21865e-06)
+
+[node name="ItemBlock" type="StaticBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_vt72v")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bko2c")
+metadata/_edit_lock_ = true
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kyu64")
+animation = &"idle"
+frame = 1
+frame_progress = 0.450187
+metadata/_edit_lock_ = true
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="HitAreaShape" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(9.53674e-08, 8)
+shape = SubResource("RectangleShape2D_3a8fk")
+debug_color = Color(0.869714, 0.331594, 0.310731, 0.42)
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]

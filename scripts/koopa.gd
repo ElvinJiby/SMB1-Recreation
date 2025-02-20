@@ -32,7 +32,7 @@ func _physics_process(delta):
 func die():
 	velocity = Vector2()
 	isDead = true
-	#anim.play("die")
+	anim.play("coming_out")
 	AudioController.play_enemydie()
 	set_collision_layer_value(1,false)
 	#kill_area.monitoring = false

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnd0gsvpc2jp1"]
+
+[ext_resource type="Script" path="res://scripts/brick.gd" id="1_4j8a3"]
+[ext_resource type="Texture2D" uid="uid://brb20kj6pi4uv" path="res://assets/objects.png" id="1_6cla7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0hds"]
+atlas = ExtResource("1_6cla7")
+region = Rect2(103, 1, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqvu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0hds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u3ae"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62146"]
+size = Vector2(68, 0)
+
+[node name="Brick" type="StaticBody2D"]
+script = ExtResource("1_4j8a3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_gqvu8")
+metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8u3ae")
+metadata/_edit_lock_ = true
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="HitareaShape" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_62146")
+debug_color = Color(0.769315, 0.442844, 0.128092, 0.42)
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]

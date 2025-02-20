@@ -1,25 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://c67mx3mt4riwp"]
 
 [ext_resource type="Script" path="res://scripts/goomba.gd" id="1_6hxh7"]
-[ext_resource type="Texture2D" uid="uid://cb27htwty73va" path="res://assets/enemies.png" id="1_vm3hm"]
+[ext_resource type="Texture2D" uid="uid://dp8eij4s782st" path="res://assets/enemies.png" id="1_vm3hm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xks6k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_odnib"]
 atlas = ExtResource("1_vm3hm")
-region = Rect2(34, 0, 16, 16)
+region = Rect2(34, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxxt5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrrca"]
 atlas = ExtResource("1_vm3hm")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g6cod"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4kja"]
 atlas = ExtResource("1_vm3hm")
-region = Rect2(17, 0, 16, 16)
+region = Rect2(17, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ik7i"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xks6k")
+"texture": SubResource("AtlasTexture_odnib")
 }],
 "loop": true,
 "name": &"die",
@@ -27,10 +27,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pxxt5")
+"texture": SubResource("AtlasTexture_vrrca")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g6cod")
+"texture": SubResource("AtlasTexture_k4kja")
 }],
 "loop": true,
 "name": &"walk",
@@ -47,6 +47,7 @@ size = Vector2(68, 20.25)
 script = ExtResource("1_6hxh7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -39)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_1ik7i")
 animation = &"walk"
